@@ -75,7 +75,7 @@ a:hover {
 }
 
 .btn:hover {
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
     transform: translateY(-2px); /* تأثير رفع بسيط عند التمرير */
     text-decoration: none;
 }
