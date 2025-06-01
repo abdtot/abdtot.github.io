@@ -14,7 +14,7 @@ body {
     padding: 0;
     direction: rtl; /* للغة العربية */
     text-align: right; /* محاذاة النص لليمين */
-    background-color: var(--background-color);
+    background-color: var(--white-color);
     color: var(--text-color);
     line-height: 1.6;
 }
