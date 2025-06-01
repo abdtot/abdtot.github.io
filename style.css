@@ -1,22 +1,28 @@
 /* General Styles */
 :root {
-    --primary-color: #0056b3; /* لون أزرق داكن */
-    --secondary-color: #007bff; /* أزرق فاتح */
-    --text-color: #333;
-    --background-color: #f4f4f4;
-    --white-color: #fff;
-    --border-color: #ddd;
+    --primary-color: #007bff;     /* أزرق نابض بالحياة */
+    --secondary-color: #28a745;   /* أخضر جميل */
+    --accent-color: #17a2b8;      /* تركواز */
+    --text-color: #343a40;        /* نص رمادي داكن للقراءة */
+    --light-text-color: #6c757d;  /* نص رمادي فاتح */
+    --background-light: #f8f9fa;  /* خلفية فاتحة للأقسام */
+    --background-dark: #e9ecef;   /* خلفية أغمق قليلاً للأقسام البديلة */
+    --white-color: #ffffff;       /* اللون الأبيض */
+    --border-color: #dee2e6;      /* لون الحدود */
+    --shadow-light: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* ظل خفيف */
+    --shadow-medium: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);     /* ظل متوسط */
 }
 
+/* Base styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط حديث */
     margin: 0;
     padding: 0;
     direction: rtl; /* للغة العربية */
     text-align: right; /* محاذاة النص لليمين */
-    background-color: var(--background-color);
+    background-color: var(--background-light); /* خلفية الجسم بلون فاتح */
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.7; /* مسافة أسطر مريحة للقراءة */
 }
 
 .container {
@@ -28,19 +34,29 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 700; /* خط سميك للعناوين */
 }
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.8rem; }
 
 p {
     margin-bottom: 15px;
+    font-size: 1.05rem;
+    color: var(--light-text-color);
 }
 
 a {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
+    color: var(--accent-color);
     text-decoration: underline;
 }
 
@@ -48,30 +64,38 @@ a:hover {
     display: inline-block;
     background-color: var(--primary-color);
     color: var(--white-color);
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-light);
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
+    transform: translateY(-2px); /* تأثير رفع بسيط عند التمرير */
     text-decoration: none;
 }
 
 /* Header */
 header {
     background-color: var(--white-color);
-    color: var(--primary-color);
-    padding: 10px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-light);
+    position: sticky; /* جعل الهيدر ثابتًا عند التمرير */
+    top: 0;
+    z-index: 1000; /* لضمان ظهوره فوق العناصر الأخرى */
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* للسماح بالعناصر بالتجاوز على الأجهزة الصغيرة */
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -80,14 +104,17 @@ header .container {
 }
 
 .logo img {
-    height: 50px;
-    margin-left: 10px; /* مسافة بين الشعار والنص */
+    height: 60px; /* حجم أكبر للشعار */
+    margin-left: 15px;
+    border-radius: 50%; /* لجعل الشعار دائريًا إذا كان مناسبًا */
+    box-shadow: var(--shadow-light);
 }
 
 .logo h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 2.2rem; /* حجم أكبر لعنوان الكلية */
     color: var(--primary-color);
+    font-weight: 800;
 }
 
 header nav ul {
@@ -99,110 +126,365 @@ header nav ul {
 }
 
 header nav ul li {
-    margin-left: 20px;
+    margin-left: 30px; /* مسافة أكبر بين عناصر القائمة */
 }
 
 header nav ul li a {
-    color: var(--primary-color);
-    font-weight: bold;
-    padding: 5px 0;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 10px 0;
     position: relative;
+    transition: color 0.3s ease;
 }
 
 header nav ul li a.active,
 header nav ul li a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 header nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
-    background: var(--secondary-color);
-    bottom: -5px;
-    right: 0; /* للغة العربية */
+    height: 3px; /* خط سميك تحت الروابط */
+    background: var(--primary-color);
+    bottom: -8px; /* مسافة أبعد عن النص */
+    right: 0;
     transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
 header nav ul li a:hover::after,
 header nav ul li a.active::after {
     width: 100%;
-    left: 0; /* للغة العربية */
 }
 
 
 /* Hero Section */
 .hero-section {
-    background: url('../images/college_building.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(40, 167, 69, 0.7)), url('../images/college_building.jpg') no-repeat center center/cover;
+    /* تدرج لوني جميل على الصورة */
     color: var(--white-color);
     text-align: center;
-    padding: 100px 0;
+    padding: 120px 0; /* مساحة أكبر */
     position: relative;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* طبقة شفافة لتوضيح النص */
-}
-
-.hero-section .container {
-    position: relative;
-    z-index: 1;
+    box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2); /* ظل داخلي */
 }
 
 .hero-section h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 3.8rem; /* حجم أكبر للعنوان الرئيسي */
+    margin-bottom: 25px;
     color: var(--white-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* ظل للنص */
 }
 
 .hero-section p {
-    font-size: 20px;
-    margin-bottom: 30px;
+    font-size: 1.5rem; /* حجم أكبر للنص */
+    margin-bottom: 40px;
     color: var(--white-color);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
+
 
 /* Features Section */
 .features-section {
-    padding: 60px 0;
+    padding: 80px 0; /* مساحة أكبر */
     background-color: var(--white-color);
     text-align: center;
+    box-shadow: var(--shadow-medium);
+    margin-top: -50px; /* لرفع القسم قليلاً فوق الهيرو */
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.features-section h3 {
+    font-size: 2.5rem;
+    color: var(--secondary-color); /* استخدام الأخضر للعناوين المميزة */
+    margin-bottom: 50px;
 }
 
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    gap: 40px; /* فجوة أكبر */
     margin-top: 40px;
 }
 
 .feature-item {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    background-color: var(--background-dark); /* خلفية أغمق قليلاً */
+    padding: 35px; /* بادنج أكبر */
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* لضمان نفس الارتفاع */
 }
 
 .feature-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px); /* تأثير رفع أكبر */
+    box-shadow: var(--shadow-medium);
 }
 
 .feature-item i {
-    font-size: 40px;
+    font-size: 50px; /* حجم أيقونة أكبر */
     color: var(--primary-color);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .feature-item h4 {
-    font-size: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: var(--light-text-color);
+}
+
+
+/* Main Content Section (for About, Majors, Admission, Contact) */
+.main-content-section {
+    padding: 60px 0;
+    background-color: var(--white-color);
+    box-shadow: var(--shadow-medium);
+    margin: 60px auto; /* مسافة أكبر */
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.main-content-section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.8rem;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--secondary-color); /* استخدام الأخضر للعناوين الرئيسية للصفحات */
+}
+
+.main-content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100px; /* خط أطول */
+    height: 4px; /* خط أسمك */
+    background-color: var(--primary-color); /* لون أزرق للخط */
+    border-radius: 2px;
+}
+
+.main-content-section h3 {
+    margin-top: 35px;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    color: var(--accent-color); /* استخدام التركواز للعناوين الفرعية */
+    border-bottom: 2px solid var(--border-color); /* خط تحت العنوان */
+    padding-bottom: 10px;
+}
+
+.main-content-section ul,
+.main-content-section ol {
+    margin-bottom: 25px;
+    padding-right: 30px;
+    font-size: 1.05rem;
+    color: var(--light-text-color);
+}
+
+.main-content-section ul li,
+.main-content-section ol li {
+    margin-bottom: 12px;
+    line-height: 1.8;
+}
+
+.main-content-section ul li::before {
+    content: "\f00c"; /* أيقونة علامة صح */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--secondary-color);
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+.main-content-section ol li {
+    font-weight: bold; /* ترقيم سميك */
+    color: var(--text-color);
+}
+.main-content-section ol li p {
+    font-weight: normal;
+    color: var(--light-text-color);
+    margin-top: 5px;
+}
+
+
+/* Majors Page Specific Styles */
+.majors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* حجم أكبر للعناصر */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.major-item {
+    background-color: var(--background-light);
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+    border-top: 5px solid var(--primary-color); /* خط علوي ملون */
+}
+
+.major-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+    border-top-color: var(--secondary-color); /* تغيير اللون عند التمرير */
+}
+
+.major-item h3 {
+    font-size: 1.9rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: none; /* إزالة الخط السفلي من العناوين الفرعية هنا */
+    padding-bottom: 0;
+}
+
+.major-item h3 i {
+    font-size: 38px; /* حجم أكبر للأيقونة */
+    margin-left: 15px;
+    color: var(--secondary-color);
+}
+
+.major-item p {
+    font-size: 1.05rem;
+    color: var(--light-text-color);
+}
+
+/* Contact Page Specific Styles */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.info-item {
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid var(--accent-color); /* خط سفلي مميز */
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.info-item i {
+    font-size: 45px; /* حجم أكبر للأيقونة */
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.info-item h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    border-bottom: none; /* إزالة الخط السفلي من العناوين الفرعية هنا */
+    padding-bottom: 0;
+}
+
+.info-item p {
+    font-size: 1.05rem;
+    color: var(--light-text-color);
+    margin-bottom: 8px;
+}
+
+.info-item a {
+    font-weight: 600;
+}
+
+.contact-form {
+    background-color: var(--background-dark); /* خلفية أغمق للنموذج */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+    margin-top: 40px;
+    text-align: right;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
     margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"], /* إذا أردت إضافة رقم هاتف */
+.form-group textarea {
+    width: calc(100% - 24px); /* لحساب البادنج والحدود */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    resize: vertical;
+    text-align: right;
+    background-color: var(--white-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* ظل تركيز أزرق */
+    outline: none; /* إزالة الخط الأزرق الافتراضي */
+}
+
+.form-group textarea {
+    min-height: 150px;
+}
+
+.contact-form button.btn {
+    width: auto;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+}
+
+.map-container {
+    margin-top: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--border-color); /* إضافة حدود للخريطة */
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px; /* ارتفاع ثابت للخريطة */
+    display: block;
 }
 
 /* Footer */
@@ -210,8 +492,9 @@ footer {
     background-color: var(--primary-color);
     color: var(--white-color);
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 25px 0;
+    margin-top: 60px; /* مسافة أكبر من المحتوى */
+    box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* ظل داخلي */
 }
 
 footer .container {
@@ -223,20 +506,36 @@ footer .container {
 
 footer p {
     margin: 0;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9); /* لون أفتح للنص */
 }
 
 .social-icons a {
     color: var(--white-color);
-    font-size: 20px;
-    margin-left: 15px; /* مسافة بين الأيقونات */
-    transition: color 0.3s ease;
+    font-size: 24px; /* حجم أكبر للأيقونات */
+    margin-left: 20px;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .social-icons a:hover {
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* تتغير للأخضر عند التمرير */
+    transform: translateY(-3px); /* تأثير رفع بسيط */
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.6rem; }
+
+    .hero-section h2 {
+        font-size: 3rem;
+    }
+    .hero-section p {
+        font-size: 1.3rem;
+    }
+}
+
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
@@ -244,28 +543,77 @@ footer p {
     }
 
     .logo {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     header nav ul {
         flex-direction: column;
         text-align: center;
+        width: 100%;
     }
 
     header nav ul li {
-        margin: 5px 0;
+        margin: 10px 0;
+        width: 100%; /* لجعل الروابط تأخذ العرض الكامل */
+    }
+    header nav ul li a::after {
+        right: 50%;
+        transform: translateX(50%);
     }
 
+    .hero-section {
+        padding: 80px 0;
+    }
     .hero-section h2 {
-        font-size: 36px;
+        font-size: 2.5rem;
     }
-
     .hero-section p {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 
-    .feature-grid {
-        grid-template-columns: 1fr;
+    .features-section {
+        padding: 50px 0;
+        margin-top: -30px;
+    }
+    .features-section h3 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .major-item, .info-item, .feature-item {
+        padding: 30px;
+        border-top-width: 3px;
+        border-bottom-width: 3px;
+    }
+
+    .main-content-section {
+        padding: 40px 15px;
+        margin: 40px auto;
+    }
+
+    .main-content-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    .main-content-section h3 {
+        font-size: 1.8rem;
+    }
+
+    .contact-form {
+        padding: 30px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .map-container iframe {
+        height: 300px;
     }
 
     footer .container {
@@ -275,6 +623,36 @@ footer p {
     footer p {
         margin-bottom: 15px;
     }
+    .social-icons {
+        margin-top: 10px;
+    }
+    .social-icons a {
+        margin: 0 10px;
+    }
 }
 
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.4rem; }
 
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    .logo img {
+        height: 45px;
+    }
+    .feature-item i {
+        font-size: 40px;
+    }
+}
