@@ -82,7 +82,7 @@ a:hover {
 
 /* Header */
 header {
-    background-color: var(--white-color);
+    background-color: var(--accent-color);
     padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
     box-shadow: var(--shadow-light);
