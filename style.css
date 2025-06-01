@@ -133,7 +133,7 @@ header nav ul li a.active::after {
 
 /* Hero Section */
 .hero-section {
-    background: url('../images/college_building.jpg') no-repeat center center/cover;
+    background: url('..logo.png') no-repeat center center/cover;
     color: var(--white-color);
     text-align: center;
     padding: 100px 0;
