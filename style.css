@@ -75,7 +75,7 @@ a:hover {
 }
 
 .btn:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
     transform: translateY(-2px); /* تأثير رفع بسيط عند التمرير */
     text-decoration: none;
 }
@@ -86,7 +86,9 @@ header {
     padding: 15px 0;
     border-bottom: 1px solid var(--border-color);
     box-shadow: var(--shadow-light);
-  /* لضمان ظهوره فوق العناصر الأخرى */
+    position: sticky; /* جعل الهيدر ثابتًا عند التمرير */
+    top: 0;
+    z-index: 1000; /* لضمان ظهوره فوق العناصر الأخرى */
 }
 
 header .container {
