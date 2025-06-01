@@ -60,7 +60,7 @@ a:hover {
 
 /* Header */
 header {
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     color: var(--primary-color);
     padding: 10px 0;
     border-bottom: 1px solid var(--border-color);
@@ -133,7 +133,7 @@ header nav ul li a.active::after {
 
 /* Hero Section */
 .hero-section {
-    background: url('..logo.png') no-repeat center center/cover;
+    background: url('logo.png') no-repeat center center/cover;
     color: var(--white-color);
     text-align: center;
     padding: 100px 0;
