@@ -3,8 +3,8 @@
     --primary-color: #0056b3; /* لون أزرق داكن */
     --secondary-color: #007bff; /* أزرق فاتح */
     --text-color: #333;
-    --background-color: #008080;
-    --white-color: #008080;
+    --background-color: #f4f4f4;
+    --white-color: #fff;
     --border-color: #ddd;
 }
 
@@ -14,7 +14,7 @@ body {
     padding: 0;
     direction: rtl; /* للغة العربية */
     text-align: right; /* محاذاة النص لليمين */
-    background-color: var(--white-color);
+    background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
 }
@@ -131,9 +131,10 @@ header nav ul li a.active::after {
     left: 0; /* للغة العربية */
 }
 
+
 /* Hero Section */
 .hero-section {
-    background: url('logo.png') no-repeat center center/cover;
+    background: url('../images/college_building.jpg') no-repeat center center/cover;
     color: var(--white-color);
     text-align: center;
     padding: 100px 0;
@@ -275,3 +276,5 @@ footer p {
         margin-bottom: 15px;
     }
 }
+
+
