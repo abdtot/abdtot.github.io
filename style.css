@@ -510,12 +510,29 @@ header nav ul li a.active::after {
 
 /* Footer */
 footer {
-    background-color: var(--primary-color);
-    color: var(--white-color);
+    /* إضافة صورة كخلفية للتذييل */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* طبقة سوداء شفافة لجعل النص واضحًا */
+                url('11.jpg') no-repeat center center/cover;
+    /* اللون الأول والثاني rgba(0, 0, 0, 0.7) يمثل طبقة سوداء بنسبة شفافية 70% */
+    /* url('../images/footer_bg.jpg') هو مسار صورتك */
+    /* no-repeat center center/cover لضمان تغطية الصورة للمساحة دون تكرار */
+
+    color: var(--white-color); /* لون النص في التذييل (أبيض) */
     text-align: center;
     padding: 25px 0;
-    margin-top: 60px; /* مسافة أكبر من المحتوى */
-    box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* ظل داخلي */
+    margin-top: 60px;
+    box-shadow: inset 0 5px 15px rgba(0,0,0,0.2); /* يمكنك إزالة هذا الظل إذا لم يتناسب مع الصورة */
+}
+
+/* التأكد من أن أيقونات التواصل الاجتماعي تظل واضحة */
+.social-icons a {
+    color: var(--white-color); /* لتظل الأيقونات بيضاء */
+    /* يمكنك إضافة تأثيرات أخرى مثل ظل النص إذا كانت الصورة فاتحة جدًا */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color); /* تبقى بلون الأخضر عند التمرير */
 }
 
 footer .container {
