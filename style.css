@@ -107,7 +107,7 @@ header {
     /* no-repeat center center/cover لضمان تغطية الصورة للمساحة دون تكرار */
 
     padding: 15px 0;
-    border-bottom: 1px solid var(--border-color); /* يمكن إزالة هذا أو تغيير لونه إذا لم يتناسب */
+    /* يمكن إزالة هذا أو تغيير لونه إذا لم يتناسب */
     box-shadow: var(--shadow-light);
 }
 
