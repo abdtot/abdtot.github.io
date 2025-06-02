@@ -108,7 +108,7 @@ header {
 
     padding: 9px 0;
     border-bottom: 1px solid var(--border-color); /* يمكن إزالة هذا أو تغيير لونه إذا لم يتناسب */
-    box-shadow: var(--shadow-light);
+ 
 }
 
 /* تعديل ألوان النص والروابط في الـ Header لتكون واضحة على الصورة الداكنة */
@@ -137,7 +137,7 @@ header .container {
 
 .logo {
     display: flex;
-    align-items: center;
+    align-items: right;
 }
 
 .logo img {
