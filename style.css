@@ -82,12 +82,38 @@ a:hover {
 
 /* Header */
 header {
-    background-color: var(--white-color);
+    /* إضافة صورة كخلفية للـ Header */
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(40, 167, 69, 0.7)), url('9.jpg') no-repeat center center/cover;
+    /* التدرج اللوني فوق الصورة لجعل النص أكثر وضوحًا */
+    /* اللون الأول rgba(0, 123, 255, 0.7) هو Primary Color بنسبة شفافية 70% */
+    /* اللون الثاني rgba(40, 167, 69, 0.7) هو Secondary Color بنسبة شفافية 70% */
+    /* url('../images/header_bg.jpg') هو مسار صورتك */
+    /* no-repeat center center/cover لضمان تغطية الصورة للمساحة دون تكرار */
+
     padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color); /* يمكن إزالة هذا أو تغيير لونه إذا لم يتناسب */
     box-shadow: var(--shadow-light);
-    /* لضمان ظهوره فوق العناصر الأخرى */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
+
+/* تعديل ألوان النص والروابط في الـ Header لتكون واضحة على الصورة الداكنة */
+header .logo h1,
+header nav ul li a {
+    color: var(--white-color); /* اجعل النص أبيض */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* إضافة ظل للنص لزيادة الوضوح */
+}
+
+header nav ul li a.active,
+header nav ul li a:hover {
+    color: var(--accent-color); /* اجعل لون التمييز مختلفًا (مثل التركواز) */
+}
+
+header nav ul li a::after {
+    background: var(--accent-color); /* اجعل خط التمييز بلون مميز */
+}
+
 
 header .container {
     display: flex;
