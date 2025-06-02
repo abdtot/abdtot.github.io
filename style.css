@@ -106,7 +106,7 @@ header {
     /* url('../images/header_bg.jpg') هو مسار صورتك */
     /* no-repeat center center/cover لضمان تغطية الصورة للمساحة دون تكرار */
 
-    padding: 9px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border-color); /* يمكن إزالة هذا أو تغيير لونه إذا لم يتناسب */
  
 }
