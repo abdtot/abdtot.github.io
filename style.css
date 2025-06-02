@@ -23,7 +23,7 @@ body {
     text-align: right;
 
     /* هنا التعديل الجديد لخلفية الـ body */
-    background: url('13.jpg') no-repeat center center fixed;
+    background: url('19.jpg') no-repeat center center fixed;
     background-size: cover;
 
     color: var(--text-color);
@@ -99,7 +99,7 @@ a:hover {
 /* Header */
 header {
     /* إضافة صورة كخلفية للـ Header */
-    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(40, 167, 69, 0.7)), url('16.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(40, 167, 69, 0.7)), url('17.jpg') no-repeat center center/cover;
     /* التدرج اللوني فوق الصورة لجعل النص أكثر وضوحًا */
     /* اللون الأول rgba(0, 123, 255, 0.7) هو Primary Color بنسبة شفافية 70% */
     /* اللون الثاني rgba(40, 167, 69, 0.7) هو Secondary Color بنسبة شفافية 70% */
@@ -528,7 +528,7 @@ header nav ul li a.active::after {
 footer {
     /* إضافة صورة كخلفية للتذييل */
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* طبقة سوداء شفافة لجعل النص واضحًا */
-                url('15.webp') no-repeat center center/cover;
+                url('18.jpg') no-repeat center center/cover;
     /* اللون الأول والثاني rgba(0, 0, 0, 0.7) يمثل طبقة سوداء بنسبة شفافية 70% */
     /* url('../images/footer_bg.jpg') هو مسار صورتك */
     /* no-repeat center center/cover لضمان تغطية الصورة للمساحة دون تكرار */
