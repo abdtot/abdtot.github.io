@@ -20,7 +20,7 @@ body {
     margin: 0;
     padding: 0;
     direction: rtl;
-    text-align: right;
+    text-align: center;
 
     /* هنا التعديل الجديد لخلفية الـ body */
     background: url('19.jpg') no-repeat center center fixed;
