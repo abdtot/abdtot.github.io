@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أساسيات الأمن السيبراني وعالم التهديدات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #00204A;
+            --light-blue: #007bff;
+            --light-gray: #f8f9fa;
+            --green: #28a745;
+            --light-green: #d4edda;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Montserrat', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* Slide Styling */
+        .slide {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        .dark-bg {
+            background: var(--dark-blue);
+            color: white;
+        }
+        
+        .light-blue-bg {
+            background: linear-gradient(135deg, var(--light-blue), #0056b3);
+            color: white;
+        }
+        
+        .gray-bg {
+            background: var(--light-gray);
+            color: #333;
+        }
+        
+        /* Header Styling */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .slide-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        .title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .text-content {
+            max-width: 80%;
+            margin: 0 auto;
+            font-size: 1.4rem;
+            line-height: 1.8;
+        }
+        
+        .slide-icon {
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .icon-right {
+            right: 5%;
+            top: 15%;
+        }
+        
+        .icon-left {
+            left: 5%;
+            top: 15%;
+        }
+        
+        /* Points Styling */
+        .points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .point {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .point:hover {
+            transform: translateY(-5px);
+        }
+        
+        .point-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--light-blue);
+        }
+        
+        .point-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--light-blue);
+        }
+        
+        .point-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        /* Summary Box */
+        .summary-box {
+            background: var(--light-green);
+            border-left: 5px solid var(--green);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            color: #155724;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Navigation */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+        }
+        
+        .nav-btn {
+            background: var(--light-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-btn:hover {
+            background: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .slide-indicators {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: var(--light-blue);
+            transform: scale(1.2);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .text-content {
+                max-width: 90%;
+                font-size: 1.2rem;
+            }
+            
+            .slide-icon {
+                font-size: 10rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 25px 15px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .point {
+                min-width: 100%;
+            }
+            
+            .slide-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الشريحة 1: شريحة العنوان -->
+        <div class="slide dark-bg active" id="slide1">
+            <div class="slide-header">
+                <div class="slide-number">1/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title">أساسيات الأمن السيبراني وعالم التهديدات</h1>
+                <h2 class="subtitle">اليوم الأول</h2>
+                <div class="slide-icon icon-right">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 2: شريحة ترحيبية -->
+        <div class="slide light-blue-bg" id="slide2">
+            <div class="slide-header">
+                <div class="slide-number">2/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title">أهلاً بك في رحلتنا!</h1>
+                <div class="text-content">
+                    <p>رائع حماسك! دعنا نبدأ اليوم بفهم الأسس القوية للأمن السيبراني.</p>
+                    <p>ستكون هذه الأسس درعك الواقي في عالمنا الرقمي.</p>
+                </div>
+                <div class="points">
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="point-title">بداية الرحلة</h3>
+                        <p class="point-content">نرحب بانضمامك لنا في هذه الرحلة المعرفية المهمة</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="point-title">الدرع الواقي</h3>
+                        <p class="point-content">ستكتسب المعرفة التي تحميك في الفضاء الإلكتروني</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="point-title">العالم الرقمي</h3>
+                        <p class="point-content">نستكشف معاً عالم الأمن السيبراني وتهديداته</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 3: فهم الأمن السيبراني -->
+        <div class="slide gray-bg" id="slide3">
+            <div class="slide-header">
+                <div class="slide-number">3/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title" style="color: var(--dark-blue);">1. فهم الأمن السيبراني: لماذا هو مهم للغاية؟</h1>
+                <div class="text-content" style="color: #333;">
+                    <p>تخيل حياتك اليومية: هاتفك، حسابك البنكي، بريدك الإلكتروني... كل هذا رقمي ومتصل بالإنترنت. الأمن السيبراني هو حماية كل هذه الأصول الرقمية.</p>
+                </div>
+                <div class="points">
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3 class="point-title">حماية معلوماتك الشخصية</h3>
+                        <p class="point-content">تجنب سرقة الهوية، الاحتيال المالي، أو الابتزاز</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="point-title">حماية خصوصيتك</h3>
+                        <p class="point-content">الحفاظ على خصوصية أنشطتك الرقمية</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="point-title">حماية الشركات والمؤسسات</h3>
+                        <p class="point-content">منع توقف الأعمال، حماية بيانات الملايين، وتجنب الخسائر الاقتصادية</p>
+                    </div>
+                </div>
+                <div class="summary-box">
+                    الخلاصة: الأمن السيبراني ضرورة ملحة. إنه خط الدفاع الأول عن وجودنا الرقمي.
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 4: التهديدات السيبرانية -->
+        <div class="slide gray-bg" id="slide4">
+            <div class="slide-header">
+                <div class="slide-number">4/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title" style="color: var(--dark-blue);">2. التهديدات السيبرانية الشائعة: تعرف على "عدوك" الرقمي!</h1>
+                <div class="text-content" style="color: #333;">
+                    <p>لكي تحمي نفسك بفعالية، يجب أن تعرف من تحمي نفسك منه.</p>
+                </div>
+                <div class="points">
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <h3 class="point-title">التصيد الاحتيالي</h3>
+                        <p class="point-content">هجمات الخداع عبر البريد الإلكتروني والرسائل</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3 class="point-title">البرامج الضارة</h3>
+                        <p class="point-content">برامج خبيثة تضر بأجهزتك وتسرق بياناتك</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="point-title">برامج الفدية</h3>
+                        <p class="point-content">تشفير ملفاتك وطلب فدية مقابل استعادتها</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <h3 class="point-title">الهندسة الاجتماعية</h3>
+                        <p class="point-content">التلاعب النفسي للحصول على معلوماتك</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 5: التصيد الاحتيالي -->
+        <div class="slide gray-bg" id="slide5">
+            <div class="slide-header">
+                <div class="slide-number">5/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title" style="color: var(--dark-blue);">التصيد الاحتيالي (Phishing): فن الخداع عبر الرسائل</h1>
+                <div class="point-icon">
+                    <i class="fas fa-hook" style="color: var(--light-blue); font-size: 3rem;"></i>
+                </div>
+                <div class="text-content" style="color: #333; margin-top: 20px;">
+                    <p>هل سبق أن تلقيت رسالة بريد إلكتروني تبدو وكأنها من بنكك، تطلب منك تحديث بياناتك؟ غالبًا ما تكون هذه رسائل تصيد احتيالي. هدفها هو خداعك لتقديم معلوماتك الحساسة.</p>
+                    <h3 style="color: var(--light-blue); margin: 30px 0 15px;">كيف تتعرف عليها؟</h3>
+                    <div class="points">
+                        <div class="point">
+                            <div class="point-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="point-title">عنوان مرسل غريب</h3>
+                            <p class="point-content">تحقق من العنوان الفعلي</p>
+                        </div>
+                        <div class="point">
+                            <div class="point-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <h3 class="point-title">روابط مشبوهة</h3>
+                            <p class="point-content">لا تنقر مباشرة. مرر الفأرة لترى الوجهة الحقيقية</p>
+                        </div>
+                        <div class="point">
+                            <div class="point-icon">
+                                <i class="fas fa-spell-check"></i>
+                            </div>
+                            <h3 class="point-title">أخطاء إملائية أو نحوية</h3>
+                            <p class="point-content">الشركات الكبرى غالبًا لا ترسل رسائل مليئة بالأخطاء</p>
+                        </div>
+                        <div class="point">
+                            <div class="point-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="point-title">شعور بالإلحاح أو التهديد</h3>
+                            <p class="point-content">"حسابك سيُقفل خلال 24 ساعة!" أو "فزت بجائزة ضخمة!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 6: البرامج الضارة -->
+        <div class="slide gray-bg" id="slide6">
+            <div class="slide-header">
+                <div class="slide-number">6/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title" style="color: var(--dark-blue);">البرامج الضارة (Malware): جيش البرمجيات الخبيثة</h1>
+                <div class="point-icon">
+                    <i class="fas fa-skull" style="color: var(--light-blue); font-size: 3rem;"></i>
+                </div>
+                <div class="text-content" style="color: #333; margin-top: 20px;">
+                    <p>مصطلح عام يشمل أي برنامج تم تصميمه لإلحاق الضرر بجهاز الكمبيوتر أو الشبكة أو سرقة البيانات.</p>
+                    <h3 style="color: var(--light-blue); margin: 30px 0 15px;">أنواعها الرئيسية:</h3>
+                    <div class="points">
+                        <div class="point">
+                            <div class="point-icon">
+                                <i class="fas fa-virus"></i>
+                            </div>
+                            <h3 class="point-title">الفيروسات (Viruses)</h3>
+                            <p class="point-content">برامج صغيرة تلتصق ببرامج أخرى وتنتشر عند تشغيلها</p>
+                        </div>
+                        <div class="point">
+                            <div class="point-icon">
+                                <i class="fas fa-horse"></i>
+                            </div>
+                            <h3 class="point-title">أحصنة طروادة (Trojans)</h3>
+                            <p class="point-content">برامج تتنكر في هيئة برامج مفيدة لكنها تخفي نوايا خبيثة</p>
+                        </div>
+                        <div class="point">
+                            <div class="point-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <h3 class="point-title">برامج التجسس (Spyware)</h3>
+                            <p class="point-content">تتثبت سرًا وتجمع معلومات عنك وترسلها للمهاجم</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 7: برامج الفدية والهندسة الاجتماعية -->
+        <div class="slide gray-bg" id="slide7">
+            <div class="slide-header">
+                <div class="slide-number">7/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title" style="color: var(--dark-blue);">تهديدات متقدمة: برامج الفدية والهندسة الاجتماعية</h1>
+                <div class="points">
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="point-title">برامج الفدية (Ransomware)</h3>
+                        <p class="point-content">يقوم بتشفير جميع ملفاتك ويطلب فدية (غالبًا بالعملات المشفرة) مقابل مفتاح فك التشفير</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <h3 class="point-title">الهندسة الاجتماعية (Social Engineering)</h3>
+                        <p class="point-content">تعتمد على التلاعب النفسي بالضحايا للحصول على معلومات. المهاجم يخترق عقلك، لا جهازك</p>
+                    </div>
+                </div>
+                <div class="text-content" style="color: #333; margin-top: 30px;">
+                    <p><strong>مثال:</strong> شخص يتصل بك يدعي أنه من الدعم الفني ويطلب معلومات تسجيل الدخول</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 8: المصطلحات الأساسية -->
+        <div class="slide gray-bg" id="slide8">
+            <div class="slide-header">
+                <div class="slide-number">8/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title" style="color: var(--dark-blue);">3. المصطلحات الأساسية: لغة الأمن السيبراني</h1>
+                <div class="text-content" style="color: #333;">
+                    <p>لا تقلق من كثرة المصطلحات، سأشرح لك أهمها بطريقة مبسطة.</p>
+                </div>
+                <div class="points">
+                    <div class="point">
+                        <div class="point-icon" style="color: var(--green);">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="point-title" style="color: var(--green);">جدار الحماية (Firewall)</h3>
+                        <p class="point-content">نظام يراقب حركة مرور البيانات بين شبكتك والإنترنت، ويسمح بالمرور المصرح به فقط. فكر فيه كحارس أمن عند مدخل منزلك.</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon" style="color: var(--green);">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h3 class="point-title" style="color: var(--green);">مكافح الفيروسات (Antivirus)</h3>
+                        <p class="point-content">برنامج مصمم للكشف عن الفيروسات والبرامج الضارة الأخرى وإزالتها أو منعها من العمل. هذا هو الشرطي الجيد في جهازك.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 9: المصطلحات الأساسية (تكملة) -->
+        <div class="slide gray-bg" id="slide9">
+            <div class="slide-header">
+                <div class="slide-number">9/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title" style="color: var(--dark-blue);">المصطلحات الأساسية (تكملة)</h1>
+                <div class="points">
+                    <div class="point">
+                        <div class="point-icon" style="color: var(--green);">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <h3 class="point-title" style="color: var(--green);">الشبكة الافتراضية الخاصة (VPN)</h3>
+                        <p class="point-content">تنشئ اتصالًا مشفرًا وآمنًا بين جهازك والإنترنت، مما يحمي بياناتك ويخفي موقعك الفعلي. تخيل نفقًا سريًا آمنًا.</p>
+                    </div>
+                    <div class="point">
+                        <div class="point-icon" style="color: var(--green);">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3 class="point-title" style="color: var(--green);">التشفير (Encryption)</h3>
+                        <p class="point-content">عملية تحويل المعلومات من صيغتها الأصلية إلى صيغة مشفرة وغير مفهومة. الهدف هو ألا يستطيع أحد قراءة البيانات إلا من يملك مفتاح فك التشفير.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 11: ملخص اليوم الأول -->
+        <div class="slide dark-bg" id="slide11">
+            <div class="slide-header">
+                <div class="slide-number">11/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title">ملخص اليوم الأول ونظرة على الغد</h1>
+                <div class="text-content">
+                    <h3 style="margin: 25px 0 15px;">ملخص اليوم:</h3>
+                    <ul style="padding-right: 20px; margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px;">فهمنا أهمية الأمن السيبراني.</li>
+                        <li style="margin-bottom: 10px;">تعرفنا على التهديدات الشائعة (التصيد، البرامج الضارة، الهندسة الاجتماعية).</li>
+                        <li style="margin-bottom: 10px;">تعرفنا على مصطلحات أساسية (جدار الحماية، مكافح الفيروسات، VPN، التشفير).</li>
+                    </ul>
+                    
+                    <h3 style="color: var(--light-green); margin: 25px 0 15px;">واجبك لليوم:</h3>
+                    <p>حاول أن تتذكر أمثلة لرسائل مشبوهة تلقيتها. هل يمكنك الآن تحديد علامات التصيد الاحتيالي فيها؟</p>
+                    
+                    <h3 style="margin: 25px 0 15px;">نظرة على الغد:</h3>
+                    <p>غدًا، سنتعمق في عقل المخترق الأخلاقي: كيف يفكرون ويكتشفون الثغرات، وكيف نستخدم هذه المعرفة للحماية.</p>
+                    
+                    <h3 style="margin: 25px 0 15px;">سؤال للمناقشة:</h3>
+                    <p>هل لديك أي أسئلة حول ما تعلمناه اليوم؟</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشريحة 12: شريحة فاصلة لليوم الثاني -->
+        <div class="slide light-blue-bg" id="slide12">
+            <div class="slide-header">
+                <div class="slide-number">12/12</div>
+            </div>
+            <div class="content">
+                <h1 class="title">أهلاً بك مجدداً في اليوم الثاني!</h1>
+                <h2 class="subtitle">عالم الاختراق الأخلاقي</h2>
+                <div class="text-content">
+                    <p>أتمنى أن تكون قد استوعبت جيداً مفاهيم اليوم الأول.</p>
+                    <p>اليوم، سندخل إلى عالم مثير: عالم الاختراق الأخلاقي.</p>
+                    <p>لا تقلق، لن نتحول إلى مخترقين أشرار! بل سنتعلم كيف يفكرون حتى نتمكن من حماية أنفسنا بشكل أفضل.</p>
+                </div>
+                <div class="slide-icon icon-right">
+                    <i class="fas fa-mask"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" disabled>
+                <i class="fas fa-arrow-right"></i> السابق
+            </button>
+            
+            <div class="slide-indicators" id="indicators">
+                <!-- Indicators will be added by JavaScript -->
+            </div>
+            
+            <button class="nav-btn" id="nextBtn">
+                التالي <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicatorsContainer = document.getElementById('indicators');
+            let currentSlide = 0;
+            
+            // Create indicators
+            slides.forEach((slide, index) => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicator.dataset.slide = index;
+                indicatorsContainer.appendChild(indicator);
+            });
+            
+            const indicators = document.querySelectorAll('.indicator');
+            
+            // Function to show slide
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+                
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                indicators[index].classList.add('active');
+                
+                // Update button states
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === slides.length - 1;
+                
+                currentSlide = index;
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    showSlide(currentSlide + 1);
+                }
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    showSlide(currentSlide - 1);
+                }
+            });
+            
+            // Indicator click
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', () => {
+                    const slideIndex = parseInt(indicator.dataset.slide);
+                    showSlide(slideIndex);
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+                    showSlide(currentSlide + 1);
+                } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                    showSlide(currentSlide - 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
