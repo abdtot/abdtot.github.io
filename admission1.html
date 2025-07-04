@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كلية رواد النهضة - القبول والتسجيل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* متغيرات الألوان والخطوط */
+        :root {
+            --primary: #0a3d62;
+            --secondary: #1e88e5;
+            --accent: #ffc107;
+            --light: #f5f8fa;
+            --dark: #0d1b2a;
+            --success: #28a745;
+            --font-main: 'Almarai', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+        
+        /* إعادة الضبط الأساسية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* التصميم الحديث للرأس */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            background-color: var(--primary);
+            padding: 5px;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin: 0;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        /* شريط التنقل العصري */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+            background-color: rgba(10, 61, 98, 0.1);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after,
+        nav a.active::after {
+            width: 70%;
+        }
+        
+        .nav-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* قسم البطاقة الرئيسية مع تأثيرات متحركة */
+        .hero-section {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3c72 100%);
+            color: white;
+            padding-top: 80px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* تأثيرات الخلفية المتحركة */
+        .hero-bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        /* أقسام المحتوى */
+        .admission-section {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* بطاقات المعلومات */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 30px;
+            border-left: 5px solid var(--accent);
+            position: relative;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-card h4 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-card h4 i {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+        
+        .info-card ul {
+            padding-right: 20px;
+        }
+        
+        .info-card li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .info-card li::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+        
+        /* خطوات التسجيل */
+        .steps-section {
+            padding: 60px 0;
+            background: linear-gradient(to bottom, white 0%, var(--light) 100%);
+        }
+        
+        .steps-container {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+        
+        .step {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            width: calc(50% - 40px);
+        }
+        
+        .step:nth-child(odd) {
+            margin-right: auto;
+        }
+        
+        .step:nth-child(even) {
+            margin-left: auto;
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            z-index: 2;
+        }
+        
+        .step:nth-child(odd)::before {
+            right: -55px;
+        }
+        
+        .step:nth-child(even)::before {
+            left: -55px;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 25px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .step:nth-child(odd) .step-number {
+            right: -65px;
+        }
+        
+        .step:nth-child(even) .step-number {
+            left: -65px;
+        }
+        
+        .step h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-right: 20px;
+        }
+        
+        .step p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* جدول المواعيد */
+        .dates-section {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+        
+        .dates-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .dates-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: right;
+            font-weight: 700;
+        }
+        
+        .dates-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .dates-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .dates-table tr:nth-child(even) {
+            background-color: rgba(10, 61, 98, 0.03);
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* قسم الإجراءات */
+        .actions-section {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--light) 0%, white 100%);
+        }
+        
+        .action-box {
+            background: linear-gradient(135deg, var(--primary), #1e3c72);
+            color: white;
+            border-radius: var(--radius);
+            padding: 50px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+        
+        .action-box h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        
+        .action-box p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+        
+        .btn-light {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-light:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* التذييل الحديث */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+            color: var(--dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+        
+        /* تأثيرات الحركة */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* التصميم المتجاوب */
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .step {
+                width: 100%;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            .steps-container::before,
+            .step::before,
+            .step .step-number {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 80%;
+                height: calc(100vh - 85px);
+                padding: 40px 20px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h3 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة مع شريط تنقل ثابت -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <img src="logo.png" alt="شعار كلية رواد النهضة">
+                    <h1>كلية رواد <span>النهضة</span></h1>
+                </div>
+                
+                <button class="nav-btn" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="index1.html">الرئيسية</a></li>
+                        <li><a href="about1.html">عن الكلية</a></li>
+                        <li><a href="majors1.html">التخصصات</a></li>
+                        <li><a href="admission1.html" class="active">القبول والتسجيل</a></li>
+                        <li><a href="contact1.html">اتصل بنا</a></li>
+                        <li><a href="dorat.html">الدورات</a></li>
+                        <li><a href="https://forms.gle/KteTiZpqBDCJonBd9" class="btn">بوابة الطالب</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم البطاقة الرئيسية مع تأثيرات متحركة -->
+    <section class="hero-section">
+        <div class="hero-bg-elements">
+            <!-- عناصر خلفية متحركة -->
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>القبول والتسجيل في كلية رواد النهضة</h2>
+                <p>ابدأ رحلتك التعليمية معنا وانضم إلى مجتمع رواد النهضة المتميز</p>
+                <a href="#admission-process" class="btn">إبدأ عملية التسجيل الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم شروط القبول والوثائق -->
+    <section class="admission-section" id="admission-process">
+        <div class="container">
+            <div class="section-title">
+                <h3>متطلبات القبول والتسجيل</h3>
+                <p>تعرف على شروط الالتحاق بكلية رواد النهضة والوثائق المطلوبة للتسجيل</p>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h4><i class="fas fa-clipboard-check"></i> شروط القبول العامة</h4>
+                    <ul>
+                        <li>الحصول على شهادة الثانوية العامة أو ما يعادلها</li>
+                        <li>اجتياز امتحان القبول والمقابلة الشخصية (إن وجدت) للتخصص المطلوب</li>
+                        <li>استيفاء شروط القبول الخاصة بكل تخصص (مثل نسبة مئوية معينة في الثانوية)</li>
+                        <li>تقديم جميع الوثائق المطلوبة كاملة وصحيحة</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h4><i class="fas fa-file-alt"></i> الوثائق المطلوبة</h4>
+                    <ul>
+                        <li>صورة طبق الأصل من شهادة الثانوية العامة</li>
+                        <li>صورة من شهادة الميلاد</li>
+                        <li>صورة من البطاقة الشخصية أو جواز السفر</li>
+                        <li>عدد 4 صور شخصية حديثة (4x6)</li>
+                        <li>استمارة طلب الالتحاق بعد تعبئتها إلكترونياً أو ورقياً</li>
+                        <li>إيصال دفع رسوم التسجيل (غير مستردة)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- خطوات التسجيل -->
+            <div class="section-title">
+                <h3>خطوات التسجيل</h3>
+                <p>اتبع هذه الخطوات لضمان إتمام عملية القبول والتسجيل بنجاح</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم خطوات التسجيل بتصميم خط زمني -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>تعبئة نموذج الطلب</h4>
+                    <p>يمكن تعبئة نموذج الطلب عبر الإنترنت على بوابة القبول أو الحصول عليه من مكتب القبول والتسجيل بالكلية. تأكد من تعبئة جميع البيانات بدقة ووضوح.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>تقديم الوثائق</h4>
+                    <p>إرفاق جميع الوثائق المطلوبة مع النموذج وتقديمها إلى مكتب القبول. يمكن تقديم المستندات شخصياً أو عبر البريد الإلكتروني للقبول.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>سداد الرسوم</h4>
+                    <p>دفع رسوم التسجيل المقررة عبر القنوات المتاحة (التحويل البنكي، الدفع الإلكتروني، أو الدفع النقدي في الخزنة).</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>اختبار القبول والمقابلة</h4>
+                    <p>سيتم تحديد موعد لاختبار القبول (إذا كان مطلوباً) والمقابلة الشخصية. تأكد من التحضير الجيد والحضور في الموعد المحدد.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>إعلان النتائج</h4>
+                    <p>سيتم إعلام الطلاب المقبولين بالنتائج عبر الموقع الإلكتروني أو البريد الإلكتروني أو الرسائل النصية خلال أسبوع من انتهاء المقابلات.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>إتمام إجراءات التسجيل</h4>
+                    <p>على الطلاب المقبولين استكمال إجراءات التسجيل ودفع الرسوم الدراسية في الموعد المحدد لضمان حجز مقعدهم الدراسي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- جدول المواعيد الهامة -->
+    <section class="dates-section">
+        <div class="container">
+            <div class="section-title">
+                <h3>المواعيد الهامة</h3>
+                <p>تعرف على المواعيد الرئيسية لعملية القبول والتسجيل للعام الأكاديمي الحالي</p>
+            </div>
+            
+            <table class="dates-table">
+                <tr>
+                    <th>الحدث</th>
+                    <th>التاريخ</th>
+                </tr>
+                <tr>
+                    <td>بدء فترة التقديم</td>
+                    <td><span class="highlight">1 يوليو 2025</span></td>
+                </tr>
+                <tr>
+                    <td>آخر موعد للتقديم</td>
+                    <td><span class="highlight">15 أغسطس 2025</span></td>
+                </tr>
+                <tr>
+                    <td>امتحانات القبول والمقابلات</td>
+                    <td><span class="highlight">20 - 25 أغسطس 2025</span></td>
+                </tr>
+                <tr>
+                    <td>إعلان نتائج القبول</td>
+                    <td><span class="highlight">1 سبتمبر 2025</span></td>
+                </tr>
+                <tr>
+                    <td>بدء الدراسة</td>
+                    <td><span class="highlight">15 سبتمبر 2025</span></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    
+    <!-- قسم الإجراءات -->
+    <section class="actions-section">
+        <div class="container">
+            <div class="action-box">
+                <h3>جاهز للانضمام إلى أسرة كلية رواد النهضة؟</h3>
+                <p>ابدأ رحلتك التعليمية معنا اليوم وكن جزءاً من مجتمع أكاديمي متميز يهيئك لمستقبل مشرق</p>
+                <a href="https://forms.gle/KteTiZpqBDCJonBd9" class="btn btn-light">تقديم طلب الالتحاق الآن</a>
+                <p style="margin-top: 20px; font-size: 1rem;">للمزيد من الاستفسارات، يرجى زيارة <a href="contact.html" style="color: var(--accent); font-weight: 700;">صفحة اتصل بنا</a> أو التواصل مع مكتب القبول والتسجيل</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل الحديث -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>عن الكلية</h4>
+                    <p>كلية رواد النهضة صرح تعليمي رائد يسعى لبناء جيل واعٍ ومؤهل لمستقبل مشرق من خلال تقديم برامج تعليمية متميزة وتوفير بيئة تعليمية محفزة للإبداع والابتكار.</p>
+                    <div class="social-links">
+                        <a href="https://n9.cl/oupht" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/shahidalmoayad?t=B5mgCa9LXfOdwB3256IxCw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/abdab_mo?igsh=eXRqbXJ4bjhkbjJk" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul class="contact-info">
+                        <li><a href="index1.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
+                        <li><a href="about1.html"><i class="fas fa-angle-left"></i> عن الكلية</a></li>
+                        <li><a href="majors1.html"><i class="fas fa-angle-left"></i> التخصصات</a></li>
+                        <li><a href="admission1.html"><i class="fas fa-angle-left"></i> القبول والتسجيل</a></li>
+                        <li><a href="dorat.html"><i class="fas fa-angle-left"></i> الدورات التدريبية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>اتصل بنا</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>صنعاء سعوان .جولة السيد .بالقرب من محطة ضفار</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>779168887</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@rowadcollege.edu.ye</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>الأحد - الخميس: 8 صباحاً - 4 مساءً</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>النشرة الإخبارية</h4>
+                    <p>اشترك في نشرتنا الإخبارية لتصلك آخر أخبار الكلية والفعاليات والدورات الجديدة.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="btn">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 كلية رواد النهضة. جميع الحقوق محفوظة.</p>
+                <p>تصميم المهندس عبدالله المؤيد</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إنشاء العناصر المتحركة في الخلفية
+        const heroBg = document.querySelector('.hero-bg-elements');
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.classList.add('bg-element');
+            
+            const size = Math.random() * 100 + 20;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 15;
+            const duration = Math.random() * 15 + 10;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.left = `${posX}%`;
+            element.style.top = `${posY}%`;
+            element.style.animationDelay = `${delay}s`;
+            element.style.animationDuration = `${duration}s`;
+            
+            heroBg.appendChild(element);
+        }
+        
+        // تفعيل القائمة المتحركة على الأجهزة الصغيرة
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // تأثير التمرير السلس للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
