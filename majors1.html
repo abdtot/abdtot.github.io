@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كلية رواد النهضة - التخصصات الأكاديمية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* متغيرات الألوان والخطوط */
+        :root {
+            --primary: #0a3d62;
+            --secondary: #1e88e5;
+            --accent: #ffc107;
+            --light: #f5f8fa;
+            --dark: #0d1b2a;
+            --success: #28a745;
+            --font-main: 'Almarai', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+        
+        /* إعادة الضبط الأساسية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* التصميم الحديث للرأس */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            background-color: var(--primary);
+            padding: 5px;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin: 0;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        /* شريط التنقل العصري */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+            background-color: rgba(10, 61, 98, 0.1);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after,
+        nav a.active::after {
+            width: 70%;
+        }
+        
+        .nav-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* قسم البطاقة الرئيسية مع تأثيرات متحركة */
+        .hero-section {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3c72 100%);
+            color: white;
+            padding-top: 80px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* تأثيرات الخلفية المتحركة */
+        .hero-bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite linear;
+        }
+        
+        /* أقسام المحتوى */
+        .majors-section {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        /* فلترة التخصصات */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* شبكة التخصصات */
+        .majors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .major-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .major-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .major-icon {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .major-content {
+            padding: 25px;
+        }
+        
+        .major-content h4 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .major-content h4 i {
+            color: var(--accent);
+        }
+        
+        .major-content p {
+            color: #555;
+            margin-bottom: 20px;
+            min-height: 120px;
+        }
+        
+        .major-info {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .major-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* قسم الأسئلة الشائعة */
+        .faq-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, white 0%, var(--light) 100%);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            background-color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(10, 61, 98, 0.05);
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            background-color: white;
+            transition: var(--transition);
+        }
+        
+        .faq-answer-content {
+            padding: 0 0 25px;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* قسم الإجراءات */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), #1e3c72);
+            color: white;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+        
+        .btn-light {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-light:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* التذييل الحديث */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+            color: var(--dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+        
+        /* تأثيرات الحركة */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* التصميم المتجاوب */
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 80%;
+                height: calc(100vh - 85px);
+                padding: 40px 20px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h3 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة مع شريط تنقل ثابت -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yIDloNiI+PC9wYXRoPjxwYXRoIGQ9Ik0yIDE1aDkiPjwvcGF0aD48cGF0aCBkPSJNMiAxMmgxNyI+PC9wYXRoPjxjaXJjbGUgY3g9IjE5IiBjeT0iMTIiIHI9IjIiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjE5IiBjeT0iNiIgcj0iMiI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTkiIGN5PSIxOCIgcj0iMiI+PC9jaXJjbGU+PC9zdmc+" alt="شعار كلية رواد النهضة">
+                    <h1>كلية رواد <span>النهضة</span></h1>
+                </div>
+                
+                <button class="nav-btn" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="index1.html">الرئيسية</a></li>
+                        <li><a href="about1.html">عن الكلية</a></li>
+                        <li><a href="majors1.html" class="active">التخصصات</a></li>
+                        <li><a href="admission1.html">القبول والتسجيل</a></li>
+                        <li><a href="contact1.html">اتصل بنا</a></li>
+                        <li><a href="dorat.html">الدورات</a></li>
+                        <li><a href="https://forms.gle/KteTiZpqBDCJonBd9" class="btn">بوابة الطالب</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم البطاقة الرئيسية مع تأثيرات متحركة -->
+    <section class="hero-section">
+        <div class="hero-bg-elements">
+            <!-- عناصر خلفية متحركة -->
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>اكتشف تخصصات كلية رواد النهضة</h2>
+                <p>اختر مسارك الأكاديمي من بين مجموعة واسعة من التخصصات المصممة لتلبية متطلبات سوق العمل الحديث</p>
+                <a href="#majors-list" class="btn">استكشف التخصصات الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التخصصات الأكاديمية -->
+    <section class="majors-section" id="majors-list">
+        <div class="container">
+            <div class="section-title">
+                <h3>برامجنا الأكاديمية</h3>
+                <p>نقدم مجموعة متنوعة من التخصصات التي تجمع بين الأصالة الأكاديمية والابتكار التكنولوجي</p>
+            </div>
+            
+            <!-- فلترة التخصصات -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">جميع التخصصات</button>
+                <button class="filter-btn" data-filter="technology">تكنولوجيا المعلومات</button>
+                <button class="filter-btn" data-filter="business">إدارة الأعمال</button>
+                <button class="filter-btn" data-filter="health">العلوم الصحية</button>
+                <button class="filter-btn" data-filter="design">التصميم</button>
+            </div>
+            
+            <!-- شبكة التخصصات -->
+            <div class="majors-grid">
+                <!-- أمن سيبراني -->
+                <div class="major-card" data-category="technology">
+                    <div class="major-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-shield-alt"></i> أمن سيبراني</h4>
+                        <p>يركز هذا التخصص على حماية الأنظمة والشبكات والبيانات من الهجمات الإلكترونية. يتعلم الطلاب كيفية تحليل التهديدات وتطوير وتنفيذ حلول أمنية للحفاظ على سرية وسلامة المعلومات.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 4 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> بكالوريوس</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- تقنية معلومات -->
+                <div class="major-card" data-category="technology">
+                    <div class="major-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-laptop-code"></i> تقنية معلومات</h4>
+                        <p>يهتم هذا التخصص بدراسة استخدام وتطوير وإدارة أنظمة المعلومات القائمة على الحاسوب. يكتسب الطلاب المهارات اللازمة لتصميم البرمجيات، إدارة قواعد البيانات، ودعم البنية التحتية للشبكات.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 4 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> بكالوريوس</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- محاسبة -->
+                <div class="major-card" data-category="business">
+                    <div class="major-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-calculator"></i> محاسبة</h4>
+                        <p>يؤهل هذا التخصص الطلاب لإعداد وتحليل السجلات المالية، وفهم المبادئ المحاسبية، ومساعدة الأفراد والمؤسسات في اتخاذ قرارات مالية سليمة، مع التركيز على التقارير المالية والتدقيق والضرائب.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 4 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> بكالوريوس</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- إدارة أعمال -->
+                <div class="major-card" data-category="business">
+                    <div class="major-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-chart-line"></i> إدارة أعمال</h4>
+                        <p>يعد الطلاب للعمل في مجالات الإدارة، التسويق، المالية، والموارد البشرية، مع التركيز على اتخاذ القرارات الاستراتيجية في بيئة الأعمال.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 4 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> بكالوريوس</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- جرافكس -->
+                <div class="major-card" data-category="design">
+                    <div class="major-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-paint-brush"></i> جرافكس</h4>
+                        <p>يركز هذا التخصص على تعليم الطلاب مبادئ التصميم المرئي، بما في ذلك التصميم الجرافيكي، الرسوم المتحركة، وتصميم الويب، لإيصال الأفكار والرسائل بشكل إبداعي وجذاب.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 3 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> دبلوم</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- قبالة وتوليد -->
+                <div class="major-card" data-category="health">
+                    <div class="major-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-baby"></i> قبالة وتوليد</h4>
+                        <p>يعد هذا التخصص الطالبات لتقديم الرعاية الشاملة للنساء قبل وأثناء وبعد الولادة، بما في ذلك المساعدة في الولادة الطبيعية وتقديم المشورة الصحية للأمهات والمواليد.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 4 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> بكالوريوس</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- تمريض -->
+                <div class="major-card" data-category="health">
+                    <div class="major-icon">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-user-nurse"></i> تمريض</h4>
+                        <p>يهدف هذا التخصص إلى إعداد ممرضين وممرضات مؤهلين لتقديم الرعاية الصحية للمرضى في مختلف البيئات، بما في ذلك تقييم الحالات، إدارة الأدوية، وتقديم الدعم النفسي.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 4 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> بكالوريوس</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- مساعد طبيب -->
+                <div class="major-card" data-category="health">
+                    <div class="major-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-stethoscope"></i> مساعد طبيب</h4>
+                        <p>يؤهل هذا التخصص الطلاب للعمل تحت إشراف الأطباء، حيث يتعلمون كيفية تشخيص الأمراض، وصف الأدوية، وإجراء الفحوصات الطبية، وتقديم الرعاية للمرضى في عيادات ومستشفيات.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 3 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> دبلوم</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- إرشاد واقتصاد زراعي -->
+                <div class="major-card" data-category="business">
+                    <div class="major-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="major-content">
+                        <h4><i class="fas fa-leaf"></i> إرشاد واقتصاد زراعي</h4>
+                        <p>يركز هذا التخصص على تطبيق المبادئ الاقتصادية والاجتماعية لتحسين الإنتاج الزراعي وتطوير المجتمعات الريفية، بما في ذلك التخطيط الزراعي، التسويق، وتقديم الإرشادات للمزارعين.</p>
+                        <div class="major-info">
+                            <span><i class="fas fa-clock"></i> 4 سنوات</span>
+                            <span><i class="fas fa-graduation-cap"></i> بكالوريوس</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم الأسئلة الشائعة -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h3>أسئلة شائعة حول التخصصات</h3>
+                <p>إجابات عن أكثر الأسئلة شيوعاً حول برامجنا الأكاديمية</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        كيف أختار التخصص المناسب لي؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            ننصح الطلاب بالاستعانة بمرشد أكاديمي لتحديد التخصص الأنسب لمهاراتهم واهتماماتهم. كما نقدم اختبارات تقييم مهني تساعد في تحديد المجالات التي تتوافق مع شخصية الطالب وقدراته.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل يمكنني تغيير تخصصي بعد البدء في الدراسة؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            نعم، يمكن للطلاب تغيير تخصصهم خلال السنة الأولى من الدراسة، شريطة استيفاء شروط القبول للتخصص الجديد والتنسيق مع الإدارة الأكاديمية لضمان انتقال سلس.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ما هي فرص العمل المتاحة بعد التخرج؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            جميع تخصصاتنا مصممة لتلبية متطلبات سوق العمل المحلي والإقليمي. لدينا شراكات مع كبرى الشركات والمؤسسات لتأمين فرص تدريب وتوظيف للخريجين. كما نقدم خدمات توجيه مهني طوال فترة الدراسة.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل تقدم الكلية برامج دراسات عليا؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            نعم، تقدم الكلية برامج ماجستير في عدة تخصصات. يمكنك الاطلاع على تفاصيل برامج الدراسات العليا من خلال زيارة صفحة الدراسات العليا على موقعنا الإلكتروني أو التواصل مع مكتب القبول.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- قسم الإجراءات -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h3>جاهز لبدء رحلتك الأكاديمية؟</h3>
+                <p>سجل الآن وانضم إلى مجتمع رواد النهضة المتميز</p>
+                <a href="admission.html" class="btn btn-light">تقديم طلب الالتحاق</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل الحديث -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>عن الكلية</h4>
+                    <p>كلية رواد النهضة صرح تعليمي رائد يسعى لبناء جيل واعٍ ومؤهل لمستقبل مشرق من خلال تقديم برامج تعليمية متميزة وتوفير بيئة تعليمية محفزة للإبداع والابتكار.</p>
+                    <div class="social-links">
+                        <a href="https://n9.cl/oupht" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/shahidalmoayad?t=B5mgCa9LXfOdwB3256IxCw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/abdab_mo?igsh=eXRqbXJ4bjhkbjJk" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul class="contact-info">
+                        <li><a href="index1.html"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
+                        <li><a href="about1.html"><i class="fas fa-angle-left"></i> عن الكلية</a></li>
+                        <li><a href="majors1.html"><i class="fas fa-angle-left"></i> التخصصات</a></li>
+                        <li><a href="admission1.html"><i class="fas fa-angle-left"></i> القبول والتسجيل</a></li>
+                        <li><a href="dorat.html"><i class="fas fa-angle-left"></i> الدورات التدريبية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>اتصل بنا</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>صنعاء سعوان .جولة السيد .بالقرب من محطة ضفار</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>779168887</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@rowadcollege.edu.ye</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>الأحد - الخميس: 8 صباحاً - 4 مساءً</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>النشرة الإخبارية</h4>
+                    <p>اشترك في نشرتنا الإخبارية لتصلك آخر أخبار الكلية والفعاليات والدورات الجديدة.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit" class="btn">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 كلية رواد النهضة. جميع الحقوق محفوظة.</p>
+                <p>تصميم المهندس عبدالله المؤيد</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إنشاء العناصر المتحركة في الخلفية
+        const heroBg = document.querySelector('.hero-bg-elements');
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.classList.add('bg-element');
+            
+            const size = Math.random() * 100 + 20;
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 15;
+            const duration = Math.random() * 15 + 10;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.left = `${posX}%`;
+            element.style.top = `${posY}%`;
+            element.style.animationDelay = `${delay}s`;
+            element.style.animationDuration = `${duration}s`;
+            
+            heroBg.appendChild(element);
+        }
+        
+        // تفعيل القائمة المتحركة على الأجهزة الصغيرة
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // فلترة التخصصات
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const majorCards = document.querySelectorAll('.major-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // إزالة النشط من جميع الأزرار
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة النشط للزر المضغوط
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                majorCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // تفعيل الأسئلة الشائعة
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // تأثير التمرير السلس للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
